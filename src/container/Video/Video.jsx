@@ -19,8 +19,6 @@ const Video = () => {
     if (!userId) setUserId(nanoid());
   }, [userId]);
 
-  console.log(((window.innerWidth - 32) * 2) / 3, window.innerHeight - 64);
-
   return (
     <div className="app__header app__flex">
       <motion.div

@@ -3,7 +3,13 @@ import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 import SendIcon from "@mui/icons-material/Send";
 
-const ChatInput = ({ addNewMessage, setJsonData, setLoading, userId }) => {
+const ChatInput = ({
+  addNewMessage,
+  setJsonData,
+  setLoading,
+  userId,
+  setIsValidInput,
+}) => {
   const [message, setMessage] = useState("");
 
   const handleMessageChange = (e) => {
@@ -31,6 +37,9 @@ const ChatInput = ({ addNewMessage, setJsonData, setLoading, userId }) => {
       );
       const data = await response?.json();
       setJsonData(data);
+      setIsValidInput(true);
+    } catch {
+      setIsValidInput(false);
     } finally {
       setLoading(false);
     }
