@@ -10,7 +10,7 @@ let messagesList = [
   "advertisement",
 ];
 
-const ChatScreen = () => {
+const ChatScreen = ({ setJsonData, setLoading }) => {
   const [message, setMessage] = useState(messagesList);
 
   const addNewMessage = (msg) => {
@@ -19,7 +19,11 @@ const ChatScreen = () => {
   return (
     <div className=" bg-white flex flex-col px-10 pt-10 pb-4 rounded-lg space-y-3">
       <MessageList list={message} />
-      <ChatInput addNewMessage={addNewMessage} />
+      <ChatInput
+        addNewMessage={addNewMessage}
+        setJsonData={setJsonData}
+        setLoading={setLoading}
+      />
     </div>
   );
 };
