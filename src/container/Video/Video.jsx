@@ -37,7 +37,7 @@ const Video = () => {
       </motion.div>
       <div className="w-2/3 h-full p-4">
         {jsonData.length === 0 ? (
-          <div className=" w-full h-full bg-gray-400 items-center justify-center flex rounded ">
+          <div className=" w-full h-full bg-white items-center justify-center flex rounded shadow-lg">
             {/* <RotatingLines
               strokeColor="grey"
               strokeWidth="5"
@@ -45,6 +45,7 @@ const Video = () => {
               width="96"
               visible={true}
             /> */}
+            <div className="text-[#6b7688]">Waiting for your prompt....</div>
           </div>
         ) : (
           <Player
