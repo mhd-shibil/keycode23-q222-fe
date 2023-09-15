@@ -8,7 +8,7 @@ export const MyVideo = ({ jsonData }) => {
 
   const getTranslateX = (val) => {
     if (val?.length) {
-      const translateX = interpolate(frame, [val[0], val[1]], [0, 1000]);
+      const translateX = interpolate(frame, val, [0, 1000]);
       return `translateX(${translateX}px)`;
     } else return "";
   };

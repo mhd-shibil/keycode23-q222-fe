@@ -15,11 +15,11 @@ const Video = () => {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [jsonData, setJsonData] = useState([]);
-  const userId = useRef();
+  const [userId, setUserId] = useState();
 
   useEffect(() => {
-    if (!userId.current) userId.current = nanoid();
-  }, []);
+    if (!userId) setUserId(nanoid());
+  }, [userId]);
 
   console.log(jsonData);
 
@@ -33,47 +33,11 @@ const Video = () => {
         <ChatScreen
           setJsonData={setJsonData}
           setLoading={setLoading}
-          userId={userId.current}
+          userId={userId}
+          loading={loading}
         />
-        {/* <Message chatMsg={"hi......."} isUser={true} />
-        <Message chatMsg={"hi how are you"} isUser={false} /> */}
-        {/* <div className="app__header-badge">
-          <div className="badge-cmp app__flex">
-            <span>👋</span>
-            <div style={{ marginLeft: 20 }}>
-              <h5 className="head-text">Type Anything </h5>
-            </div>
-          </div>
-        </div> */}
-        {/* <div className="w-full h-30 justify-center flex flex-col items-center gap-4">
-          <input
-            className="w-full h-12 border-2 rounded px-4 row-span-3"
-            value={input}
-            onChange={(event) => setInput(event.target.value)}
-          />
-          <div>
-            <button
-              className="mr-12 bg-blue-300 px-4 py-2 rounded"
-              onClick={handleClick}
-            >
-              Create
-            </button>
-            <button
-              className="mr-12 bg-blue-300 px-4 py-2 rounded"
-              onClick={() => getData(true)}
-            >
-              Reset
-            </button>
-          </div>
-        </div> */}
       </motion.div>
-      <div
-        // style={{
-        //   width: "auto",
-        //   // height: "500px",
-        // }}
-        className="w-2/3 h-full p-4"
-      >
+      <div className="w-2/3 h-full p-4">
         {jsonData.length === 0 ? (
           <div className=" w-full h-full bg-gray-400 items-center justify-center flex rounded ">
             {/* <RotatingLines
