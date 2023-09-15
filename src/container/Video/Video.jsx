@@ -1,16 +1,14 @@
-import React, { useEffect, useState, useRef } from "react";
-import { RotatingLines } from "react-loader-spinner";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { nanoid } from "nanoid";
 
-import "./Video.scss";
-
-import AppWrap from "../../wrapper/AppWrap";
 import { MyVideo } from "../../components/Video/MyVideo";
 import { Player } from "@remotion/player";
-import Message from "../Chat/Message.jsx";
-import ChatInput from "../Chat/ChatInput";
 import ChatScreen from "../Chat/ChatScreen";
+import { AppWrap } from "../../wrapper";
+
+import "./Video.scss";
+
 const Video = () => {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
