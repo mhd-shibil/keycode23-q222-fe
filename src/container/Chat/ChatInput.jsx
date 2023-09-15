@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 import SendIcon from "@mui/icons-material/Send";
 
-const ChatInput = ({ addNewMessage, setJsonData, setLoading }) => {
+const ChatInput = ({ addNewMessage, setJsonData, setLoading, userId }) => {
   const [message, setMessage] = useState("");
 
   const handleMessageChange = (e) => {
@@ -12,14 +12,16 @@ const ChatInput = ({ addNewMessage, setJsonData, setLoading }) => {
 
   const handleSendMessage = () => {
     addNewMessage(message);
-    getData(message);
+    getData();
     setMessage("");
   };
-  async function getData(inputText) {
+  async function getData(isReset = false) {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://bff0-103-181-238-106.ngrok-free.app/generate-response?prompt=${inputText}&reset=true`,
+        `https://bff0-103-181-238-106.ngrok-free.app/generate-response?prompt="${message}"${
+          isReset ? "&reset=true" : ""
+        }&userId=${userId}`,
         {
           method: "GET",
           redirect: "follow",
@@ -35,7 +37,7 @@ const ChatInput = ({ addNewMessage, setJsonData, setLoading }) => {
     }
   }
   return (
-    <div>
+    <div className="flex flex-col space-y-2">
       <TextField
         className=""
         fullWidth
@@ -60,6 +62,15 @@ const ChatInput = ({ addNewMessage, setJsonData, setLoading }) => {
           ),
         }}
       />
+      <button
+        className="mr-12 bg-blue-300 px-4 py-2 rounded"
+        onClick={() => {
+          getData(true);
+          addNewMessage("", true);
+        }}
+      >
+        Reset
+      </button>
     </div>
   );
 };

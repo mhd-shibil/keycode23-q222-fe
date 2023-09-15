@@ -17,6 +17,10 @@ const Header = () => {
   const [jsonData, setJsonData] = useState([]);
   const userId = useRef();
 
+  useEffect(() => {
+    if (!userId.current) userId.current = nanoid();
+  }, []);
+
   // console.log(userId);
 
   return (
@@ -26,7 +30,11 @@ const Header = () => {
         transition={{ duration: 0.5 }}
         className="app__header-info w-1/3"
       >
-        <ChatScreen setJsonData={setJsonData} setLoading={setLoading} />
+        <ChatScreen
+          setJsonData={setJsonData}
+          setLoading={setLoading}
+          userId={userId.current}
+        />
         {/* <Message chatMsg={"hi......."} isUser={true} />
         <Message chatMsg={"hi how are you"} isUser={false} /> */}
         {/* <div className="app__header-badge">
