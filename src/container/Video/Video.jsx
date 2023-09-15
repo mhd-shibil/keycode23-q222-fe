@@ -15,11 +15,11 @@ const Video = () => {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [jsonData, setJsonData] = useState([]);
-  const userId = useRef();
+  const [userId, setUserId] = useState();
 
   useEffect(() => {
-    if (!userId.current) userId.current = nanoid();
-  }, []);
+    if (!userId) setUserId(nanoid());
+  }, [userId]);
 
   console.log(jsonData);
 
@@ -33,7 +33,7 @@ const Video = () => {
         <ChatScreen
           setJsonData={setJsonData}
           setLoading={setLoading}
-          userId={userId.current}
+          userId={userId}
           loading={loading}
         />
       </motion.div>
