@@ -21,8 +21,6 @@ const Video = () => {
     if (!userId) setUserId(nanoid());
   }, [userId]);
 
-  console.log(jsonData);
-
   return (
     <div className="app__header app__flex">
       <motion.div

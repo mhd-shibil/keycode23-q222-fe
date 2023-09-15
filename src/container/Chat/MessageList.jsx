@@ -1,5 +1,5 @@
 import Message from "./Message";
-const MessageList = ({ list, loading }) => {
+const MessageList = ({ list, loading, isValidInput }) => {
   return (
     <div className="space-y-6">
       {list.map((msg, index) => {
@@ -7,6 +7,7 @@ const MessageList = ({ list, loading }) => {
         if (index === list.length - 1) isLast = true;
         return (
           <Message
+            isValidInput={isValidInput}
             chatMsg={msg}
             isUser={true}
             isLast={isLast}
