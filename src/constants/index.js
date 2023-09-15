@@ -3,7 +3,7 @@ import images from "./images";
 export const menuItems = ["home", "get started", "contact"];
 
 
-export const expertiseTechImages = [images.flutter, images.redux, images.sass];
+export const expertiseTechImages = [images.react, images.figma, images.sass];
 
 export const dummyMap = {
   train:
