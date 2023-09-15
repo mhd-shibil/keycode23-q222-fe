@@ -2,7 +2,7 @@ import ChatInput from "./ChatInput";
 import MessageList from "./MessageList.jsx";
 import React, { useState } from "react";
 
-const ChatScreen = ({ setJsonData, setLoading, userId }) => {
+const ChatScreen = ({ setJsonData, setLoading, userId, loading }) => {
   const [message, setMessage] = useState([]);
 
   const addNewMessage = (msg, isReset) => {
@@ -11,7 +11,7 @@ const ChatScreen = ({ setJsonData, setLoading, userId }) => {
   };
   return (
     <div className=" bg-white flex flex-col px-10 pt-10 pb-4 rounded-lg space-y-3 my-4 mx-2 w-full h-full justify-between">
-      <MessageList list={message} />
+      <MessageList list={message} loading={loading} />
       <ChatInput
         addNewMessage={addNewMessage}
         setJsonData={setJsonData}
