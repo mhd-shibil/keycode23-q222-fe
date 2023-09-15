@@ -6,13 +6,13 @@ const PriceCard = ({ plan }) => {
         <div className="text-5xl">${plan.price}</div>
         <div>per month</div>
       </div>
-      <div className="flex items-center flex-col py-8 gap-2">
+      <div className="flex items-center justify-start flex-col py-8 gap-2 text-base font-normal text-[#6b7688]">
         {plan.features.map((feature) => (
           <div>{feature}</div>
         ))}
       </div>
       <div className="p-4 w-full">
-        <button className=" bg-gray-200 w-full px-4 py-2 rounded">
+        <button className=" bg-gray-800 w-full px-4 py-2 rounded text-base font-normal text-white">
           Get Plan
         </button>
       </div>
