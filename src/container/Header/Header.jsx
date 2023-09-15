@@ -21,14 +21,14 @@ const Header = () => {
     if (!userId.current) userId.current = nanoid();
   }, []);
 
-  // console.log(userId);
+  console.log(jsonData);
 
   return (
     <div className="app__header app__flex">
       <motion.div
         whileInView={{ x: [-100, 0], opacity: [0, 1] }}
         transition={{ duration: 0.5 }}
-        className="app__header-info w-1/3"
+        className="app__header-info w-1/3 flex gap-4"
       >
         <ChatScreen
           setJsonData={setJsonData}
@@ -72,17 +72,17 @@ const Header = () => {
         //   width: "auto",
         //   // height: "500px",
         // }}
-        className="w-2/3"
+        className="w-2/3 h-full p-4"
       >
-        {loading ? (
-          <div className=" w-[800px] h-[500px] bg-gray-400 items-center justify-center flex ">
-            <RotatingLines
+        {jsonData.length === 0 ? (
+          <div className=" w-full h-full bg-gray-400 items-center justify-center flex rounded ">
+            {/* <RotatingLines
               strokeColor="grey"
               strokeWidth="5"
               animationDuration="0.75"
               width="96"
               visible={true}
-            />
+            /> */}
           </div>
         ) : (
           <Player
@@ -97,6 +97,10 @@ const Header = () => {
             controls
             inputProps={{
               jsonData: jsonData,
+            }}
+            style={{
+              width: "100%",
+              height: "100%"
             }}
           />
         )}

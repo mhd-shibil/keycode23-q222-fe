@@ -16,6 +16,7 @@ const ChatInput = ({ addNewMessage, setJsonData, setLoading, userId }) => {
     setMessage("");
   };
   async function getData(isReset = false) {
+    console.log(1111)
     setLoading(true);
     try {
       const response = await fetch(
@@ -63,13 +64,13 @@ const ChatInput = ({ addNewMessage, setJsonData, setLoading, userId }) => {
         }}
       />
       <button
-        className="mr-12 bg-blue-300 px-4 py-2 rounded"
+        className="mr-12 bg-gray-700 text-white font-bold text-lg px-4 py-2 rounded w-full"
         onClick={() => {
           getData(true);
           addNewMessage("", true);
         }}
       >
-        Reset
+        Reset Chat
       </button>
     </div>
   );

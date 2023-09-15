@@ -10,7 +10,7 @@ const ChatScreen = ({ setJsonData, setLoading, userId }) => {
     else setMessage((prev) => [...prev, msg]);
   };
   return (
-    <div className=" bg-white flex flex-col px-10 pt-10 pb-4 rounded-lg space-y-3">
+    <div className=" bg-white flex flex-col px-10 pt-10 pb-4 rounded-lg space-y-3 my-4 mx-2 w-full h-full justify-between">
       <MessageList list={message} />
       <ChatInput
         addNewMessage={addNewMessage}
