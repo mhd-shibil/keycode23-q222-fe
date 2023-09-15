@@ -1,0 +1,102 @@
+[
+    {
+      "fps": 24,
+      "scenes": [
+        {
+          "durationInFrames": 120,
+          "startFrame": 0,
+          "endFrame": 119,
+          "layers": [
+            {
+              "version": "4.0",
+              "name": "scene_1_background",
+              "layerNumber": 1,
+              "opacity": 1,
+              "rotate": 0,
+              "id": "abc123",
+              "type": "image",
+              "layerType": "background",
+              "top": 0,
+              "left": 0,
+              "scaleX": 1,
+              "scaleY": 1,
+              "hidden": false,
+              "url": "https://kinsta.com/wp-content/uploads/2020/09/imag-file-types.png",
+              "orientation": "horizontal"
+            },
+            {
+              "version": "4.0",
+              "name": "scene_1_character",
+              "layerNumber": 2,
+              "opacity": 1,
+              "rotate": 0,
+              "id": "def456",
+              "type": "image",
+              "layerType": "character",
+              "top": 100,
+              "left": 200,
+              "scaleX": 0.8,
+              "scaleY": 0.8,
+              "hidden": false,
+              "url": "https://kinsta.com/wp-content/uploads/2020/09/imag-file-types.png",
+              "orientation": "horizontal"
+            }
+          ],
+          "version": "v1",
+          "id": "scene_1",
+          "canvasBgColor": "rgb(255, 255, 255)"
+        },
+        {
+          "durationInFrames": 150,
+          "startFrame": 120,
+          "endFrame": 269,
+          "layers": [
+            {
+              "version": "4.0",
+              "name": "scene_2_background",
+              "layerNumber": 1,
+              "opacity": 1,
+              "rotate": 0,
+              "id": "ghi789",
+              "type": "image",
+              "layerType": "background",
+              "top": 0,
+              "left": 0,
+              "scaleX": 1,
+              "scaleY": 1,
+              "hidden": false,
+              "url": "https://kinsta.com/wp-content/uploads/2020/09/imag-file-types.png",
+              "orientation": "horizontal"
+            },
+            {
+              "version": "4.0",
+              "name": "scene_2_character",
+              "layerNumber": 2,
+              "opacity": 1,
+              "rotate": 0,
+              "id": "jkl012",
+              "type": "image",
+              "layerType": "character",
+              "top": 120,
+              "left": 180,
+              "scaleX": 0.7,
+              "scaleY": 0.7,
+              "hidden": false,
+              "url": "https://kinsta.com/wp-content/uploads/2020/09/imag-file-types.png",
+              "orientation": "horizontal"
+            }
+          ],
+          "version": "v1",
+          "id": "scene_2",
+          "canvasBgColor": "rgb(255, 255, 255)"
+        }
+      ],
+      "version": "v1",
+      "dimensions": {
+        "id": 5,
+        "width": 1920,
+        "height": 1080
+      },
+      "durationInFrames": 270
+    }
+  ]
