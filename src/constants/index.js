@@ -1,6 +1,6 @@
 import images from "./images";
 
-export const menuItems = ["home", "get started", "contact"];
+export const menuItems = ["home", "get started", "pricing"];
 
 export const expertiseTechImages = [images.react, images.figma, images.sass];
 
