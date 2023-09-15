@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <div className="flex justify-center items-center flex-col">
       <div className="text-[150px]">
-        Vid<span className="text-[#313bac]">Gen</span>
+        Vid<span className="text-[#313bac]">Gen.AI</span>
       </div>
       <div className="text-[18px] mt-[-50px] mb-[40px]">
         Visualize your Ideas
