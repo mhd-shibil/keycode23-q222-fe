@@ -8,7 +8,9 @@ const Header = () => {
       <div className="text-[150px]">
         Vid<span className="text-[#313bac]">Gen</span>
       </div>
-      <div className="text-[18px]">Visualize your Ideas</div>
+      <div className="text-[18px] mt-[-50px] mb-[40px]">
+        Visualize your Ideas
+      </div>
       <a
         href={`#get started`}
         className="cursor-pointer mt-2 rounded-lg bg-[#313bac] text-white px-4 py-2"
