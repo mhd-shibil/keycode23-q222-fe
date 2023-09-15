@@ -9,21 +9,20 @@ export const MyVideo = ({ jsonData }) => {
 
   const getTranslateX = (val) => {
     if (val?.length) {
-      const translateX = interpolate(frame, val, [0, 1000]);
+      const translateX = interpolate(frame, [0, 150], [val[0], val[1]]);
       return `translateX(${translateX}px)`;
     } else return "";
   };
 
   const getTranslateY = (val) => {
     if (val?.length) {
-      const translateY = interpolate(frame, [val[0], val[1]], [0, 1000]);
+      const translateY = interpolate(frame, [0, 150], [val[0], val[1]]);
       return `translateY(${translateY}px)`;
     } else return "";
   };
 
   const getRotate = (val) => {
     if (val) {
-      console.log(val);
       const rotateX = interpolate(frame, [0, 200], [0, 1080], {
         extrapolateRight: "clamp",
         extrapolateLeft: "clamp",
@@ -33,35 +32,44 @@ export const MyVideo = ({ jsonData }) => {
     return "";
   };
 
-
   const getWeather = (weather) => {
-    switch(weather){
-      case 'rainy': return <Rain/>;
-      case 'snowy': return <Rain type='snow'/>;
-      case 'sunny': return <Sun />;
-      default: return;
+    switch (weather) {
+      case "rainy":
+        return <Rain />;
+      case "snowy":
+        return <Rain type="snow" />;
+      case "sunny":
+        return <Sun />;
+      default:
+        return;
     }
-  }
-
+  };
 
   return (
     <>
-      <AbsoluteFill style={{backgroundColor: '#87CEEB'}}>
+      <AbsoluteFill style={{background: jsonData?.background || 'white'}}>
         {jsonData?.data?.map((layer) => {
+          console.log(1, layer.translateX);
           return (
-            dummyMap[layer?.object]&&<Img 
-              style={{
-                position: 'absolute',
-                bottom: `${layer?.bottom}px`,
-                left: `${layer?.left}px`,
-                width: 200,
-                transform: `${
-                  getTranslateX(layer.translateX) +
-                  getTranslateY(layer.transalteY)
-                } 
-                  ${getRotate(layer.rotate)}  scaleX(${layer.scaleX||layer?.scale
-                }) scaleY(${layer.scaleY||layer?.scale})`,
-              }} width={200} src={dummyMap[layer?.object]} />
+            dummyMap[layer?.object] && (
+              <Img
+                style={{
+                  position: "absolute",
+                  bottom: `${layer?.bottom}px`,
+                  left: `${layer?.left}px`,
+                  width: 200,
+                  transform: `${
+                    getTranslateX(layer.translateX) +
+                    getTranslateY(layer.transalteY)
+                  } 
+                  ${getRotate(layer.rotate)}  scaleX(${
+                    layer.scaleX || layer?.scale || 1
+                  }) scaleY(${layer.scaleY || layer?.scale || 1})`,
+                }}
+                width={200}
+                src={dummyMap[layer?.object]}
+              />
+            )
           );
         })}
         {getWeather(jsonData?.weather)}
