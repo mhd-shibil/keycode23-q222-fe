@@ -23,12 +23,14 @@ const Header = () => {
   //   getData();
   // }, []);
 
-  async function getData(inputText) {
+  async function getData(isReset = false) {
     setLoading(true);
     // TODO: need to change
     try {
       const response = await fetch(
-        `https://bff0-103-181-238-106.ngrok-free.app/generate-response?prompt="${input}"`,
+        `https://bff0-103-181-238-106.ngrok-free.app/generate-response?prompt="${input}"${
+          isReset ? "&reset=true" : ""
+        }`,
         {
           method: "GET",
           redirect: "follow",
@@ -63,15 +65,26 @@ const Header = () => {
             </div>
           </div>
         </div> */}
-        <div className="w-full h-10 justify-center flex  items-center gap-4">
+        <div className="w-full h-30 justify-center flex flex-col items-center gap-4">
           <input
-            className="w-full h-full border-2 rounded px-4"
+            className="w-full h-12 border-2 rounded px-4 row-span-3"
             value={input}
             onChange={(event) => setInput(event.target.value)}
           />
-          <button className="mr-12 bg-blue-300 px-4 py-2 rounded" onClick={handleClick}>
-            Create
-          </button>
+          <div>
+            <button
+              className="mr-12 bg-blue-300 px-4 py-2 rounded"
+              onClick={handleClick}
+            >
+              Create
+            </button>
+            <button
+              className="mr-12 bg-blue-300 px-4 py-2 rounded"
+              onClick={() => getData(true)}
+            >
+              Reset
+            </button>
+          </div>
         </div>
       </motion.div>
       <div
