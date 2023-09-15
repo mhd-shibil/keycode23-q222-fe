@@ -21,7 +21,7 @@ const Video = () => {
     if (!userId) setUserId(nanoid());
   }, [userId]);
 
-  console.log(jsonData);
+  console.log(((window.innerWidth - 32) * 2) / 3, window.innerHeight - 64);
 
   return (
     <div className="app__header app__flex">
@@ -52,8 +52,10 @@ const Video = () => {
           <Player
             component={MyVideo}
             durationInFrames={150}
-            compositionWidth={1200}
-            compositionHeight={700}
+            // compositionWidth={1200}
+            // compositionHeight={700}
+            compositionWidth={Math.floor(((window.innerWidth - 32) * 2) / 3)}
+            compositionHeight={Math.floor(window.innerHeight - 96)}
             fps={30}
             autoPlay
             initiallyShowControls
@@ -62,10 +64,10 @@ const Video = () => {
             inputProps={{
               jsonData: jsonData,
             }}
-            style={{
-              width: "100%",
-              height: "100%",
-            }}
+            // style={{
+            //   width: "100%",
+            //   height: "100%",
+            // }}
             loop
           />
         )}
