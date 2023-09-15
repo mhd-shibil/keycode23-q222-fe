@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 import "./Header.scss";
@@ -10,12 +10,33 @@ import { Player } from "@remotion/player";
 const Header = () => {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [jsonData, setJsonData] = useState([]);
 
   const handleChangeinput = (e) => {
     setInput(e.target.value);
   };
 
   const handleSubmit = () => {};
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  async function getData(inputText) {
+    // TODO: need to change
+    const response = await fetch(
+      `https://bff0-103-181-238-106.ngrok-free.app/generate-response?prompt=" create a train and pole"`,
+      {
+        method: "GET",
+        redirect: "follow",
+        headers: new Headers({
+          "ngrok-skip-browser-warning": "69420",
+        }),
+      }
+    );
+    const data = await response?.json();
+    setJsonData(data?.data);
+  }
 
   return (
     <div className="app__header app__flex">
@@ -35,13 +56,13 @@ const Header = () => {
       </motion.div>
       <div
         style={{
-          width: "800px",
+          width: "auto",
           height: "500px",
         }}
       >
         <Player
           component={MyVideo}
-          durationInFrames={400}
+          durationInFrames={500}
           compositionWidth={800}
           compositionHeight={500}
           fps={30}
@@ -50,6 +71,9 @@ const Header = () => {
           alwaysShowControls
           clickToPlay
           controls
+          inputProps={{
+            jsonData: jsonData,
+          }}
         />
       </div>
       <motion.div
