@@ -10,10 +10,12 @@ import { AppWrap } from "../../wrapper";
 import "./Video.scss";
 
 const Video = () => {
-  const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [jsonData, setJsonData] = useState([]);
   const [userId, setUserId] = useState();
+
+  const compositionWidth = Math.floor(((window.innerWidth - 32) * 2) / 3);
+  const compositionHeight = Math.floor(window.innerHeight - 96);
 
   useEffect(() => {
     if (!userId) setUserId(nanoid());
@@ -31,6 +33,8 @@ const Video = () => {
           setLoading={setLoading}
           userId={userId}
           loading={loading}
+          compositionWidth={compositionWidth}
+          compositionHeight={compositionHeight}
         />
       </motion.div>
       <div className="w-2/3 h-full p-4">
@@ -43,7 +47,7 @@ const Video = () => {
               width="96"
               visible={true}
             /> */}
-            <div className="text-[#6b7688]">Waiting for your prompt....</div>
+            <div className="text-[#6b7688] text-lg">Waiting for your prompt....</div>
           </div>
         ) : (
           <Player
@@ -51,8 +55,8 @@ const Video = () => {
             durationInFrames={150}
             // compositionWidth={1200}
             // compositionHeight={700}
-            compositionWidth={Math.floor(((window.innerWidth - 32) * 2) / 3)}
-            compositionHeight={Math.floor(window.innerHeight - 96)}
+            compositionWidth={compositionWidth}
+            compositionHeight={compositionHeight}
             fps={30}
             autoPlay
             initiallyShowControls

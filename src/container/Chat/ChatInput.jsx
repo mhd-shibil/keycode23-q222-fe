@@ -9,6 +9,8 @@ const ChatInput = ({
   setLoading,
   userId,
   setIsValidInput,
+  compositionWidth,
+  compositionHeight,
 }) => {
   const [message, setMessage] = useState("");
 
@@ -21,11 +23,12 @@ const ChatInput = ({
     getData();
     setMessage("");
   };
+
   async function getData(isReset = false) {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://bff0-103-181-238-106.ngrok-free.app/generate-response?prompt="${message}"${
+        `https://bff0-103-181-238-106.ngrok-free.app/generate-response?prompt=${message} VIEWPORT:width:${compositionWidth},height:${compositionHeight} ${
           isReset ? "&reset=true" : ""
         }&userId=${userId}`,
         {
@@ -72,7 +75,7 @@ const ChatInput = ({
         }}
       />
       <button
-        className="mr-12 bg-gray-300 font-normal text-sm px-4 py-2 rounded w-full"
+        className="mr-12 bg-gray-300 font-normal text-sm px-4 py-2 rounded w-full text-white"
         onClick={() => {
           getData(true);
           addNewMessage("", true);

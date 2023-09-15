@@ -13,6 +13,19 @@ export const dummyMap = {
   hill: "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694795266/images/mountains/hill-removebg-preview_s7tgfm.svg",
   pole: "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694761110/images/poles/pole2-removebg-preview_qjzg5p.png",
   ball: "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694780430/images/ball/ball-removebg-preview_ckzoqe.png",
+  plane:
+    "https://res.cloudinary.com/dcjd7om7c/image/upload/v1694783983/ay6nnd8u8agbcqvjruzn.png",
+  cycling:
+    "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694813174/images/cycling/cycling_ulv7uc.gif",
+  walkingMan:
+    "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694809374/images/manWalk/output-onlinegiftools_t1euwn.gif",
+  footballPlayer:
+    "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694813269/images/football/footballPlayer_yi5tfo.gif",
+  tree: "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694813332/images/tree/tree_e4nani.png",
+  cristmasTree:
+    "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694813452/images/christmasTree/christmastree_vnc4ku.png",
+  flyingBird:
+    "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694813654/images/flyingBird/flying_bird_sxjoqd.gif",
 };
 
 export const dummyAbouts = [
