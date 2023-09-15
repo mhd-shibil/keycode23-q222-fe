@@ -3,7 +3,14 @@ import MessageList from "./MessageList.jsx";
 import React, { useState } from "react";
 import "./ChatScreen.scss";
 
-const ChatScreen = ({ setJsonData, setLoading, userId, loading }) => {
+const ChatScreen = ({
+  setJsonData,
+  setLoading,
+  userId,
+  loading,
+  compositionWidth,
+  compositionHeight,
+}) => {
   const [message, setMessage] = useState([]);
   const [isValidInput, setIsValidInput] = useState(true);
 
@@ -27,6 +34,8 @@ const ChatScreen = ({ setJsonData, setLoading, userId, loading }) => {
           setJsonData={setJsonData}
           setLoading={setLoading}
           userId={userId}
+          compositionWidth={compositionWidth}
+          compositionHeight={compositionHeight}
         />
       </div>
     </div>

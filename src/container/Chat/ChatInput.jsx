@@ -9,6 +9,8 @@ const ChatInput = ({
   setLoading,
   userId,
   setIsValidInput,
+  compositionWidth,
+  compositionHeight,
 }) => {
   const [message, setMessage] = useState("");
 
@@ -21,11 +23,17 @@ const ChatInput = ({
     getData();
     setMessage("");
   };
+
+  const promtText = {
+    CONCEPT: message,
+    VIEWPORT: { width: compositionWidth, height: compositionHeight },
+  };
+
   async function getData(isReset = false) {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://bff0-103-181-238-106.ngrok-free.app/generate-response?prompt="${message}"${
+        `https://bff0-103-181-238-106.ngrok-free.app/generate-response?prompt="${promtText}"${
           isReset ? "&reset=true" : ""
         }&userId=${userId}`,
         {
