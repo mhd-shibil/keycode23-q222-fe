@@ -43,7 +43,6 @@ export const MyVideo = ({ jsonData }) => {
     }
   }
 
-  console.log(jsonData)
 
   return (
     <>

@@ -16,7 +16,6 @@ const ChatInput = ({ addNewMessage, setJsonData, setLoading, userId }) => {
     setMessage("");
   };
   async function getData(isReset = false) {
-    console.log(1111)
     setLoading(true);
     try {
       const response = await fetch(
@@ -46,7 +45,7 @@ const ChatInput = ({ addNewMessage, setJsonData, setLoading, userId }) => {
         value={message}
         onChange={handleMessageChange}
         onKeyDown={(e) => {
-          if (e.key === "Enter") {
+          if (e.key === "Enter" && message) {
             handleSendMessage();
           }
         }}
@@ -56,6 +55,7 @@ const ChatInput = ({ addNewMessage, setJsonData, setLoading, userId }) => {
               color="primary"
               onClick={handleSendMessage}
               aria-label="send message"
+              disabled={!message}
             >
               <SendIcon />
             </IconButton>

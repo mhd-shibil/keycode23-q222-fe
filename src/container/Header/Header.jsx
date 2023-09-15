@@ -5,8 +5,16 @@ import AppWrap from "../../wrapper/AppWrap";
 const Header = () => {
   return (
     <div className="flex justify-center items-center flex-col">
-      <div>VidGen</div>
-      <div>Visualize your Ideas</div>
+      <div className="text-[150px]">
+        Vid<span className="text-[#313bac]">Gen</span>
+      </div>
+      <div className="text-[20px] font-medium">Visualize your Ideas</div>
+      <a
+        href={`#get started`}
+        className="cursor-pointer mt-2 rounded-lg bg-[#313bac] text-white px-4 py-2"
+      >
+        Get Started
+      </a>
     </div>
   );
 };

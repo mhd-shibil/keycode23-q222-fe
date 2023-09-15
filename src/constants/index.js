@@ -2,16 +2,15 @@ import images from "./images";
 
 export const menuItems = ["home", "get started", "contact"];
 
-
 export const expertiseTechImages = [images.react, images.figma, images.sass];
 
 export const dummyMap = {
   train:
     "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694768315/images/trains/train6-removebg-preview_egdxzh.png",
-  bird: "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694761212/images/birds/birds5-removebg-preview_mt30ae.png",
-  hill: "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694761152/images/mountains/hills_night-removebg-preview_uwsxht.png",
+  bird: "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694795774/images/birds/birds6-removebg-preview_cy4mdg.svg",
+  hill: "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694795266/images/mountains/hill-removebg-preview_s7tgfm.svg",
   pole: "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694761110/images/poles/pole2-removebg-preview_qjzg5p.png",
-  ball: "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694778143/images/ball/ball_auph8q.png",
+  ball: "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694780430/images/ball/ball-removebg-preview_ckzoqe.png",
 };
 
 export const dummyAbouts = [
