@@ -63,7 +63,7 @@ const ChatInput = ({ addNewMessage, setJsonData, setLoading, userId }) => {
         }}
       />
       <button
-        className="mr-12 bg-gray-300 font-medium text-lg px-4 py-2 rounded w-full"
+        className="mr-12 bg-gray-300 font-normal text-sm px-4 py-2 rounded w-full"
         onClick={() => {
           getData(true);
           addNewMessage("", true);

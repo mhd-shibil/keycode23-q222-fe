@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <nav className="app__navbar">
       <div className="app__navbar-logo">
-        <img src={images.logo} alt="logo" height={50}/>
+        <img src={images.logo} alt="logo" width={30} height={30}/>
       </div>
       <ul className="app__navbar-links">
         {menuItems.map((item) => (
