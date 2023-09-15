@@ -6,11 +6,12 @@ import SendIcon from "@mui/icons-material/Send";
 const ChatInput = ({
   addNewMessage,
   setJsonData,
+  isLoading,
   setLoading,
   userId,
-  setIsValidInput,
   compositionWidth,
   compositionHeight,
+  updateFailedMessageStatus,
 }) => {
   const [message, setMessage] = useState("");
 
@@ -40,9 +41,8 @@ const ChatInput = ({
       );
       const data = await response?.json();
       setJsonData(data);
-      setIsValidInput(true);
     } catch {
-      setIsValidInput(false);
+      updateFailedMessageStatus();
     } finally {
       setLoading(false);
     }
@@ -57,7 +57,7 @@ const ChatInput = ({
         value={message}
         onChange={handleMessageChange}
         onKeyDown={(e) => {
-          if (e.key === "Enter" && message) {
+          if (e.key === "Enter" && message && !isLoading) {
             handleSendMessage();
           }
         }}
@@ -67,7 +67,7 @@ const ChatInput = ({
               color="primary"
               onClick={handleSendMessage}
               aria-label="send message"
-              disabled={!message}
+              disabled={!message || isLoading}
             >
               <SendIcon />
             </IconButton>
@@ -77,8 +77,9 @@ const ChatInput = ({
       <button
         className="mr-12 bg-gray-300 font-normal text-sm px-4 py-2 rounded w-full text-white"
         onClick={() => {
-          getData(true);
           addNewMessage("", true);
+          getData(true);
+          setMessage("");
         }}
       >
         Reset Chat

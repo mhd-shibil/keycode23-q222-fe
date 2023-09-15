@@ -46,70 +46,74 @@ export const MyVideo = ({ jsonData }) => {
   };
 
   const getContent = (layer) => {
-    switch(layer?.type) {
-      case 'text': {
-        return (<div 
-      style={{
-        position: 'absolute',
-        bottom: `${layer?.bottom}px`,
-        left: `${layer?.left}px`,
-        transform: `${
-          getTranslateX(layer.translateX) +
-          getTranslateY(layer.transalteY)
-        } 
+    switch (layer?.type) {
+      case "text": {
+        return (
+          <div
+            style={{
+              position: "absolute",
+              bottom: `${layer?.bottom}px`,
+              left: `${layer?.left}px`,
+              transform: `${
+                getTranslateX(layer.translateX) +
+                getTranslateY(layer.transalteY)
+              } 
         ${getRotate(layer.rotate)}  scaleX(${
-          layer.scaleX || layer?.scale || 1
-        }) scaleY(${layer.scaleY || layer?.scale || 1})`,
-      }}>
-{layer.text}
-      </div>)};
-      default: return (
-        <Img
-          style={{
-            position: "absolute",
-            bottom: `${layer?.bottom}px`,
-            left: `${layer?.left}px`,
-            width: layer?.width,
-            height: layer?.height,
-            transform: `${
-              getTranslateX(layer.translateX) +
-              getTranslateY(layer.transalteY)
-            } 
+                layer.scaleX || layer?.scale || 1
+              }) scaleY(${layer.scaleY || layer?.scale || 1})`,
+            }}
+          >
+            {layer.text}
+          </div>
+        );
+      }
+      default:
+        return (
+          <Img
+            style={{
+              position: "absolute",
+              bottom: `${layer?.bottom}px`,
+              left: `${layer?.left}px`,
+              width: layer?.width,
+              height: layer?.height,
+              transform: `${
+                getTranslateX(layer.translateX) +
+                getTranslateY(layer.transalteY)
+              } 
             ${getRotate(layer.rotate)}  scaleX(${
-              layer.scaleX || layer?.scale || 1
-            }) scaleY(${layer.scaleY || layer?.scale || 1})`,
-          }}
-          width={layer?.width}
-          height={layer?.height}
-          src={dummyMap[layer?.object]}
-        />)
+                layer.scaleX || layer?.scale || 1
+              }) scaleY(${layer.scaleY || layer?.scale || 1})`,
+            }}
+            width={layer?.width}
+            height={layer?.height}
+            src={dummyMap[layer?.object]}
+          />
+        );
     }
-  }
+  };
 
   return (
     <>
-      <AbsoluteFill style={{background: jsonData?.background || 'white'}}>
+      <AbsoluteFill style={{ background: jsonData?.background || "white" }}>
         {jsonData?.data?.map((layer) => {
-          return (
-              getContent(layer)
-              // <Img
-              //   style={{
-              //     position: "absolute",
-              //     bottom: `${layer?.bottom}px`,
-              //     left: `${layer?.left}px`,
-              //     width: 200,
-              //     transform: `${
-              //       getTranslateX(layer.translateX) +
-              //       getTranslateY(layer.transalteY)
-              //     } 
-              //     ${getRotate(layer.rotate)}  scaleX(${
-              //       layer.scaleX || layer?.scale || 1
-              //     }) scaleY(${layer.scaleY || layer?.scale || 1})`,
-              //   }}
-              //   width={200}
-              //   src={dummyMap[layer?.object]}
-              // />
-          );
+          return getContent(layer);
+          // <Img
+          //   style={{
+          //     position: "absolute",
+          //     bottom: `${layer?.bottom}px`,
+          //     left: `${layer?.left}px`,
+          //     width: 200,
+          //     transform: `${
+          //       getTranslateX(layer.translateX) +
+          //       getTranslateY(layer.transalteY)
+          //     }
+          //     ${getRotate(layer.rotate)}  scaleX(${
+          //       layer.scaleX || layer?.scale || 1
+          //     }) scaleY(${layer.scaleY || layer?.scale || 1})`,
+          //   }}
+          //   width={200}
+          //   src={dummyMap[layer?.object]}
+          // />
         })}
         {getWeather(jsonData?.weather)}
       </AbsoluteFill>

@@ -47,7 +47,9 @@ const Video = () => {
               width="96"
               visible={true}
             /> */}
-            <div className="text-[#6b7688] text-lg">Waiting for your prompt....</div>
+            <div className="text-[#6b7688] text-lg">
+              Waiting for your prompt....
+            </div>
           </div>
         ) : (
           <Player

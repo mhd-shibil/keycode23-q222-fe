@@ -7,8 +7,8 @@ const MessageList = ({ list, loading, isValidInput }) => {
         if (index === list.length - 1) isLast = true;
         return (
           <Message
-            isValidInput={isValidInput}
-            chatMsg={msg}
+            isValidInput={msg.isSuccess}
+            chatMsg={msg.text}
             isUser={true}
             isLast={isLast}
             loading={loading}
