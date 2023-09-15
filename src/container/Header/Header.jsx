@@ -1,17 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { RotatingLines } from "react-loader-spinner";
 import { motion } from "framer-motion";
+import { nanoid } from "nanoid";
 
 import "./Header.scss";
 
 import AppWrap from "../../wrapper/AppWrap";
 import { MyVideo } from "../../components/Video/MyVideo";
 import { Player } from "@remotion/player";
+// import { useId } from "react";
 
 const Header = () => {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [jsonData, setJsonData] = useState([]);
+  const userId = useRef();
+
+  // console.log(userId);
 
   const handleChangeinput = (e) => {
     setInput(e.target.value);
@@ -19,9 +24,9 @@ const Header = () => {
 
   const handleSubmit = () => {};
 
-  // useEffect(() => {
-  //   getData();
-  // }, []);
+  useEffect(() => {
+    if (!userId.current) userId.current = nanoid();
+  }, []);
 
   async function getData(isReset = false) {
     setLoading(true);
@@ -30,7 +35,7 @@ const Header = () => {
       const response = await fetch(
         `https://bff0-103-181-238-106.ngrok-free.app/generate-response?prompt="${input}"${
           isReset ? "&reset=true" : ""
-        }`,
+        }&userId=${userId.current}`,
         {
           method: "GET",
           redirect: "follow",
