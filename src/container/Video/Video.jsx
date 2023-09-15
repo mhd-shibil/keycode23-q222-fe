@@ -26,7 +26,7 @@ const Video = () => {
   return (
     <div className="app__header app__flex">
       <motion.div
-        whileInView={{ x: [-100, 0], opacity: [0, 1] }}
+        whileInView={{ x: [0, 0], opacity: [0, 1] }}
         transition={{ duration: 0.5 }}
         className="app__header-info w-1/3 flex gap-4"
       >
