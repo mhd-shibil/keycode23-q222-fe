@@ -12,7 +12,7 @@ const PriceCard = ({ plan }) => {
         ))}
       </div>
       <div className="p-4 w-full">
-        <button className=" bg-gray-800 w-full px-4 py-2 rounded text-base font-normal text-white">
+        <button className=" bg-gray-800 w-full px-4 py-2 rounded text-base font-semibold text-white">
           Get Plan
         </button>
       </div>
