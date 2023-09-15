@@ -46,7 +46,6 @@ export const MyVideo = ({ jsonData }) => {
   };
 
   const getContent = (layer) => {
-    debugger
     switch(layer?.type) {
       case 'text': {
         return (<div 
@@ -70,7 +69,8 @@ export const MyVideo = ({ jsonData }) => {
             position: "absolute",
             bottom: `${layer?.bottom}px`,
             left: `${layer?.left}px`,
-            width: 200,
+            width: layer?.width,
+            height: layer?.height,
             transform: `${
               getTranslateX(layer.translateX) +
               getTranslateY(layer.transalteY)
@@ -79,7 +79,8 @@ export const MyVideo = ({ jsonData }) => {
               layer.scaleX || layer?.scale || 1
             }) scaleY(${layer.scaleY || layer?.scale || 1})`,
           }}
-          width={200}
+          width={layer?.width}
+          height={layer?.height}
           src={dummyMap[layer?.object]}
         />)
     }
@@ -89,7 +90,6 @@ export const MyVideo = ({ jsonData }) => {
     <>
       <AbsoluteFill style={{background: jsonData?.background || 'white'}}>
         {jsonData?.data?.map((layer) => {
-          debugger
           return (
               getContent(layer)
               // <Img
