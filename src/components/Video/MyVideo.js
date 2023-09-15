@@ -47,7 +47,7 @@ export const MyVideo = ({ jsonData }) => {
 
   return (
     <>
-      <AbsoluteFill style={{ backgroundColor: "#87CEEB" }}>
+      <AbsoluteFill style={{background: jsonData?.background || 'white'}}>
         {jsonData?.data?.map((layer) => {
           return (
             dummyMap[layer?.object] && (
