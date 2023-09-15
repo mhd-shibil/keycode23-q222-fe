@@ -1,16 +1,14 @@
-import React, { useEffect, useState, useRef } from "react";
-import { RotatingLines } from "react-loader-spinner";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { nanoid } from "nanoid";
 
-import "./Video.scss";
-
-import AppWrap from "../../wrapper/AppWrap";
 import { MyVideo } from "../../components/Video/MyVideo";
 import { Player } from "@remotion/player";
-import Message from "../Chat/Message.jsx";
-import ChatInput from "../Chat/ChatInput";
 import ChatScreen from "../Chat/ChatScreen";
+import { AppWrap } from "../../wrapper";
+
+import "./Video.scss";
+
 const Video = () => {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -24,7 +22,7 @@ const Video = () => {
   return (
     <div className="app__header app__flex">
       <motion.div
-        whileInView={{ x: [-100, 0], opacity: [0, 1] }}
+        whileInView={{ x: [0, 0], opacity: [0, 1] }}
         transition={{ duration: 0.5 }}
         className="app__header-info w-1/3 flex gap-4"
       >
@@ -37,7 +35,7 @@ const Video = () => {
       </motion.div>
       <div className="w-2/3 h-full p-4">
         {jsonData.length === 0 ? (
-          <div className=" w-full h-full bg-gray-400 items-center justify-center flex rounded ">
+          <div className=" w-full h-full bg-white items-center justify-center flex rounded shadow-lg">
             {/* <RotatingLines
               strokeColor="grey"
               strokeWidth="5"
@@ -45,13 +43,16 @@ const Video = () => {
               width="96"
               visible={true}
             /> */}
+            <div className="text-[#6b7688]">Waiting for your prompt....</div>
           </div>
         ) : (
           <Player
             component={MyVideo}
             durationInFrames={150}
-            compositionWidth={1200}
-            compositionHeight={700}
+            // compositionWidth={1200}
+            // compositionHeight={700}
+            compositionWidth={Math.floor(((window.innerWidth - 32) * 2) / 3)}
+            compositionHeight={Math.floor(window.innerHeight - 96)}
             fps={30}
             autoPlay
             initiallyShowControls
@@ -60,10 +61,10 @@ const Video = () => {
             inputProps={{
               jsonData: jsonData,
             }}
-            style={{
-              width: "100%",
-              height: "100%",
-            }}
+            // style={{
+            //   width: "100%",
+            //   height: "100%",
+            // }}
             loop
           />
         )}

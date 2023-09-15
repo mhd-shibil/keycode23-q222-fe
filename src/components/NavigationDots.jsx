@@ -2,7 +2,7 @@ import React from "react";
 import { menuItems } from "../constants";
 
 const NavigationDots = ({ active }) => {
-  console.log(active);
+  // console.log(active);
   return (
     <div className="app__navigation">
       {menuItems.map((item, index) => (
