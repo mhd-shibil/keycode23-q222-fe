@@ -23,19 +23,25 @@ const Header = () => {
   }, []);
 
   async function getData(inputText) {
+    setLoading(true)
     // TODO: need to change
-    const response = await fetch(
-      `https://bff0-103-181-238-106.ngrok-free.app/generate-response?prompt=" create a train and pole"`,
-      {
-        method: "GET",
-        redirect: "follow",
-        headers: new Headers({
-          "ngrok-skip-browser-warning": "69420",
-        }),
-      }
-    );
-    const data = await response?.json();
-    setJsonData(data?.data);
+    try{
+      const response = await fetch(
+        `https://bff0-103-181-238-106.ngrok-free.app/generate-response?prompt="create a train and pole"&reset=true`,
+        {
+          method: "GET",
+          redirect: "follow",
+          headers: new Headers({
+            "ngrok-skip-browser-warning": "69420",
+          }),
+        }
+      );
+      const data = await response?.json();
+      setJsonData(data?.data);
+    }
+    finally{
+    setLoading(false)
+    }
   }
 
   return (
@@ -60,7 +66,7 @@ const Header = () => {
           height: "500px",
         }}
       >
-        <Player
+        {loading ? <span>loading...</span>:<Player
           component={MyVideo}
           durationInFrames={500}
           compositionWidth={800}
@@ -68,13 +74,12 @@ const Header = () => {
           fps={30}
           autoPlay
           initiallyShowControls
-          alwaysShowControls
           clickToPlay
           controls
           inputProps={{
             jsonData: jsonData,
           }}
-        />
+        />}
       </div>
       <motion.div
         whileInView={{ opacity: [0, 1] }}
