@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { RotatingLines } from "react-loader-spinner";
 import { motion } from "framer-motion";
 
 import "./Header.scss";
@@ -23,9 +24,9 @@ const Header = () => {
   }, []);
 
   async function getData(inputText) {
-    setLoading(true)
+    setLoading(true);
     // TODO: need to change
-    try{
+    try {
       const response = await fetch(
         `https://bff0-103-181-238-106.ngrok-free.app/generate-response?prompt="create a train and pole"&reset=true`,
         {
@@ -38,9 +39,8 @@ const Header = () => {
       );
       const data = await response?.json();
       setJsonData(data?.data);
-    }
-    finally{
-    setLoading(false)
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -66,20 +66,32 @@ const Header = () => {
           height: "500px",
         }}
       >
-        {loading ? <span>loading...</span>:<Player
-          component={MyVideo}
-          durationInFrames={500}
-          compositionWidth={800}
-          compositionHeight={500}
-          fps={30}
-          autoPlay
-          initiallyShowControls
-          clickToPlay
-          controls
-          inputProps={{
-            jsonData: jsonData,
-          }}
-        />}
+        {loading ? (
+          <div className=" w-[800px] h-[500px] bg-gray-400 items-center justify-center flex ">
+            <RotatingLines
+              strokeColor="grey"
+              strokeWidth="5"
+              animationDuration="0.75"
+              width="96"
+              visible={true}
+            />
+          </div>
+        ) : (
+          <Player
+            component={MyVideo}
+            durationInFrames={500}
+            compositionWidth={800}
+            compositionHeight={500}
+            fps={30}
+            autoPlay
+            initiallyShowControls
+            clickToPlay
+            controls
+            inputProps={{
+              jsonData: jsonData,
+            }}
+          />
+        )}
       </div>
       <motion.div
         whileInView={{ opacity: [0, 1] }}
