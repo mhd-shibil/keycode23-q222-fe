@@ -1,6 +1,7 @@
 import images from "./images";
 
-export const menuItems = ["home", "about", "contact"];
+// export const menuItems = ["home", "about", "contact"];
+export const menuItems = ["home"];
 
 export const expertiseTechImages = [images.flutter, images.redux, images.sass];
 
