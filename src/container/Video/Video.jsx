@@ -74,7 +74,7 @@ const Video = () => {
         // }}
         className="w-2/3 h-full p-4"
       >
-        {jsonData.length === 0 ? (
+        {jsonData?.data?.length === 0 ? (
           <div className=" w-full h-full bg-gray-400 items-center justify-center flex rounded ">
             {/* <RotatingLines
               strokeColor="grey"
@@ -87,7 +87,7 @@ const Video = () => {
         ) : (
           <Player
             component={MyVideo}
-            durationInFrames={500}
+            durationInFrames={150}
             compositionWidth={1200}
             compositionHeight={700}
             fps={30}
@@ -102,6 +102,7 @@ const Video = () => {
               width: "100%",
               height: "100%",
             }}
+            loop
           />
         )}
       </div>

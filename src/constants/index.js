@@ -10,7 +10,7 @@ export const dummyMap = {
     "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694768315/images/trains/train6-removebg-preview_egdxzh.png",
   bird: "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694761212/images/birds/birds5-removebg-preview_mt30ae.png",
   hill: "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694761152/images/mountains/hills_night-removebg-preview_uwsxht.png",
-  pole: "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694761111/images/poles/pole2_z7mgli.png",
+  pole: "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694761110/images/poles/pole2-removebg-preview_qjzg5p.png",
   ball: "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694778143/images/ball/ball_auph8q.png",
 };
 

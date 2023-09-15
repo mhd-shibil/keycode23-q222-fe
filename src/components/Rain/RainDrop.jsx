@@ -6,7 +6,8 @@ import SnowFlake from './snowflake.svg';
 export const RainDrop = ({
   delay,
   x,
-  size
+  size,
+  type
 
 }) => {
   const {fps}=useVideoConfig();
@@ -31,7 +32,7 @@ export const RainDrop = ({
         top: top*100+'%',
         transform: `scale(${size})`
       }} 
-       src={SnowFlake} />
+       src={type==='snow'?SnowFlake:RainDropImage} />
   
   )
 }

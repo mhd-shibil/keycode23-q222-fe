@@ -25,14 +25,13 @@ const ChatInput = ({ addNewMessage, setJsonData, setLoading, userId }) => {
         }&userId=${userId}`,
         {
           method: "GET",
-          redirect: "follow",
           headers: new Headers({
             "ngrok-skip-browser-warning": "69420",
           }),
         }
       );
       const data = await response?.json();
-      setJsonData(data?.data);
+      setJsonData(data);
     } finally {
       setLoading(false);
     }

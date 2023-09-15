@@ -2,13 +2,14 @@ import React from "react";
 import { AbsoluteFill, Img, interpolate, useCurrentFrame } from "remotion";
 import { dummyMap } from "../../constants";
 import { Rain } from "../Rain/Rain";
+import { Sun } from "../Sun/Sun";
 
 export const MyVideo = ({ jsonData }) => {
   const frame = useCurrentFrame();
 
   const getTranslateX = (val) => {
     if (val?.length) {
-      const translateX = interpolate(frame, [val[0], val[1]], [0, 1000]);
+      const translateX = interpolate(frame, val, [0, 1000]);
       return `translateX(${translateX}px)`;
     } else return "";
   };
@@ -32,34 +33,24 @@ export const MyVideo = ({ jsonData }) => {
     return "";
   };
 
-  const getScaleX = (val) => {
-    if (val && val !== 1) {
-      const scaleX = interpolate(frame, [0, 200], [1, 2], {
-        extrapolateRight: "clamp",
-        extrapolateLeft: "clamp",
-      });
-      return `scaleX(${scaleX})`;
-    }
-    return "";
-  };
 
-  const getScaleY = (val) => {
-    if (val && val !== 1) {
-      const scaleY = interpolate(frame, [0, 200], [1, 2], {
-        extrapolateRight: "clamp",
-        extrapolateLeft: "clamp",
-      });
-      return `scaleX(${scaleY})`;
+  const getWeather = (weather) => {
+    switch(weather){
+      case 'rainy': return <Rain/>;
+      case 'snowy': return <Rain type='snow'/>;
+      case 'sunny': return <Sun />;
+      default: return;
     }
-    return "";
-  };
+  }
+
+  console.log(jsonData)
 
   return (
     <>
       <AbsoluteFill style={{backgroundColor: '#87CEEB'}}>
-        {jsonData?.map((layer) => {
+        {jsonData?.data?.map((layer) => {
           return (
-              <Img 
+            dummyMap[layer?.object]&&<Img 
               style={{
                 position: 'absolute',
                 bottom: `${layer?.bottom}px`,
@@ -69,13 +60,12 @@ export const MyVideo = ({ jsonData }) => {
                   getTranslateX(layer.translateX) +
                   getTranslateY(layer.transalteY)
                 } 
-                  ${getRotate(layer.rotate)} ${getScaleX(
-                  layer.scaleX
-                )}`,
+                  ${getRotate(layer.rotate)}  scaleX(${layer.scaleX||layer?.scale
+                }) scaleY(${layer.scaleY||layer?.scale})`,
               }} width={200} src={dummyMap[layer?.object]} />
           );
         })}
-        <Rain/>
+        {getWeather(jsonData?.weather)}
       </AbsoluteFill>
     </>
   );
