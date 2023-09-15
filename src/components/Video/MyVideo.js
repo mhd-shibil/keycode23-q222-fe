@@ -45,30 +45,70 @@ export const MyVideo = ({ jsonData }) => {
     }
   };
 
+  const getContent = (layer) => {
+    debugger
+    switch(layer?.type) {
+      case 'text': {
+        return (<div 
+      style={{
+        position: 'absolute',
+        bottom: `${layer?.bottom}px`,
+        left: `${layer?.left}px`,
+        transform: `${
+          getTranslateX(layer.translateX) +
+          getTranslateY(layer.transalteY)
+        } 
+        ${getRotate(layer.rotate)}  scaleX(${
+          layer.scaleX || layer?.scale || 1
+        }) scaleY(${layer.scaleY || layer?.scale || 1})`,
+      }}>
+{layer.text}
+      </div>)};
+      default: return (
+        <Img
+          style={{
+            position: "absolute",
+            bottom: `${layer?.bottom}px`,
+            left: `${layer?.left}px`,
+            width: 200,
+            transform: `${
+              getTranslateX(layer.translateX) +
+              getTranslateY(layer.transalteY)
+            } 
+            ${getRotate(layer.rotate)}  scaleX(${
+              layer.scaleX || layer?.scale || 1
+            }) scaleY(${layer.scaleY || layer?.scale || 1})`,
+          }}
+          width={200}
+          src={dummyMap[layer?.object]}
+        />)
+    }
+  }
+
   return (
     <>
       <AbsoluteFill style={{background: jsonData?.background || 'white'}}>
         {jsonData?.data?.map((layer) => {
+          debugger
           return (
-            dummyMap[layer?.object] && (
-              <Img
-                style={{
-                  position: "absolute",
-                  bottom: `${layer?.bottom}px`,
-                  left: `${layer?.left}px`,
-                  width: 200,
-                  transform: `${
-                    getTranslateX(layer.translateX) +
-                    getTranslateY(layer.transalteY)
-                  } 
-                  ${getRotate(layer.rotate)}  scaleX(${
-                    layer.scaleX || layer?.scale || 1
-                  }) scaleY(${layer.scaleY || layer?.scale || 1})`,
-                }}
-                width={200}
-                src={dummyMap[layer?.object]}
-              />
-            )
+              getContent(layer)
+              // <Img
+              //   style={{
+              //     position: "absolute",
+              //     bottom: `${layer?.bottom}px`,
+              //     left: `${layer?.left}px`,
+              //     width: 200,
+              //     transform: `${
+              //       getTranslateX(layer.translateX) +
+              //       getTranslateY(layer.transalteY)
+              //     } 
+              //     ${getRotate(layer.rotate)}  scaleX(${
+              //       layer.scaleX || layer?.scale || 1
+              //     }) scaleY(${layer.scaleY || layer?.scale || 1})`,
+              //   }}
+              //   width={200}
+              //   src={dummyMap[layer?.object]}
+              // />
           );
         })}
         {getWeather(jsonData?.weather)}

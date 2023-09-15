@@ -1,13 +1,15 @@
 import images from "./images";
+import Bird from './bird.gif'
 
 export const menuItems = ["home", "get started", "pricing"];
+
 
 export const expertiseTechImages = [images.react, images.figma, images.sass];
 
 export const dummyMap = {
   train:
     "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694768315/images/trains/train6-removebg-preview_egdxzh.png",
-  bird: "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694795774/images/birds/birds6-removebg-preview_cy4mdg.svg",
+  bird: Bird,
   hill: "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694795266/images/mountains/hill-removebg-preview_s7tgfm.svg",
   pole: "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694761110/images/poles/pole2-removebg-preview_qjzg5p.png",
   ball: "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694780430/images/ball/ball-removebg-preview_ckzoqe.png",
