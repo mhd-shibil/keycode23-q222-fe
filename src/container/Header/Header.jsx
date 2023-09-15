@@ -6,7 +6,9 @@ import "./Header.scss";
 import AppWrap from "../../wrapper/AppWrap";
 import { MyVideo } from "../../components/Video/MyVideo";
 import { Player } from "@remotion/player";
-
+import Message from "../Chat/Message.jsx";
+import ChatInput from "../Chat/ChatInput";
+import ChatScreen from "../Chat/ChatScreen";
 const Header = () => {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -24,14 +26,17 @@ const Header = () => {
         transition={{ duration: 0.5 }}
         className="app__header-info"
       >
-        <div className="app__header-badge">
+        <ChatScreen />
+        {/* <Message chatMsg={"hi......."} isUser={true} />
+        <Message chatMsg={"hi how are you"} isUser={false} /> */}
+        {/* <div className="app__header-badge">
           <div className="badge-cmp app__flex">
             <span>👋</span>
             <div style={{ marginLeft: 20 }}>
               <h5 className="head-text">Type Anything </h5>
             </div>
           </div>
-        </div>
+        </div> */}
       </motion.div>
       <div
         style={{
