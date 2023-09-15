@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { RotatingLines } from "react-loader-spinner";
 import { motion } from "framer-motion";
+import { nanoid } from "nanoid";
 
 import "./Header.scss";
 
@@ -13,13 +15,16 @@ const Header = () => {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [jsonData, setJsonData] = useState([]);
+  const userId = useRef();
+
+  // console.log(userId);
 
   return (
     <div className="app__header app__flex">
       <motion.div
         whileInView={{ x: [-100, 0], opacity: [0, 1] }}
         transition={{ duration: 0.5 }}
-        className="app__header-info"
+        className="app__header-info w-1/3"
       >
         <ChatScreen setJsonData={setJsonData} setLoading={setLoading} />
         {/* <Message chatMsg={"hi......."} isUser={true} />
@@ -32,21 +37,51 @@ const Header = () => {
             </div>
           </div>
         </div> */}
+        {/* <div className="w-full h-30 justify-center flex flex-col items-center gap-4">
+          <input
+            className="w-full h-12 border-2 rounded px-4 row-span-3"
+            value={input}
+            onChange={(event) => setInput(event.target.value)}
+          />
+          <div>
+            <button
+              className="mr-12 bg-blue-300 px-4 py-2 rounded"
+              onClick={handleClick}
+            >
+              Create
+            </button>
+            <button
+              className="mr-12 bg-blue-300 px-4 py-2 rounded"
+              onClick={() => getData(true)}
+            >
+              Reset
+            </button>
+          </div>
+        </div> */}
       </motion.div>
       <div
-        style={{
-          width: "auto",
-          height: "500px",
-        }}
+        // style={{
+        //   width: "auto",
+        //   // height: "500px",
+        // }}
+        className="w-2/3"
       >
         {loading ? (
-          <span>loading...</span>
+          <div className=" w-[800px] h-[500px] bg-gray-400 items-center justify-center flex ">
+            <RotatingLines
+              strokeColor="grey"
+              strokeWidth="5"
+              animationDuration="0.75"
+              width="96"
+              visible={true}
+            />
+          </div>
         ) : (
           <Player
             component={MyVideo}
             durationInFrames={500}
-            compositionWidth={800}
-            compositionHeight={500}
+            compositionWidth={1200}
+            compositionHeight={700}
             fps={30}
             autoPlay
             initiallyShowControls

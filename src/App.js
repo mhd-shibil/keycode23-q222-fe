@@ -9,9 +9,8 @@ const App = () => {
     <div className="app">
       <Navbar />
       <Header />
-      <About />
-
-      <Footer />
+      {/* <About /> */}
+      {/* <Footer /> */}
     </div>
   );
 };
