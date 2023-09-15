@@ -25,6 +25,10 @@ export const dummyMap = {
     "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694813452/images/christmasTree/christmastree_vnc4ku.png",
   flyingBird:
     "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694813654/images/flyingBird/flying_bird_sxjoqd.gif",
+  earth:
+    "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694819233/images/planets/earth-removebg-preview_qrazbv.png",
+  moon: "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694819222/images/planets/moon-removebg-preview_jv0ba4.png",
+  sun: "https://res.cloudinary.com/dqgo7mp9y/image/upload/v1694819214/images/planets/sun-removebg-preview_jaxvve.png",
 };
 
 export const dummyAbouts = [
